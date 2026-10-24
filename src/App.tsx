@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { NavIni } from './component/navbar-inicio'
 import { Tabla, type Columna } from './component/carta-precio'
+import logoNombre from './assets/logo-nombre.png'
+import tazas11oz from './assets/tazas11oz.png'
+import tazas15oz from './assets/tazas15oz.png'
 
 function App() {
   // Estado para la pestaña de tazas seleccionada
@@ -81,7 +84,7 @@ function App() {
           <div className='flex items-center justify-between w-full md:w-auto'>
             <img 
               className='w-32 sm:w-40 md:w-44 h-auto block m-1' 
-              src="./src/assets/logo-nombre.png" 
+              src={logoNombre} 
               alt="Logo" 
             />
 
@@ -163,7 +166,7 @@ function App() {
               /* VISTA 11 OZ */
               <div className='flex flex-col lg:flex-row items-center lg:items-start gap-4'>
                 <div className='w-48 sm:w-64 lg:w-72 lg:h-72 flex-shrink-0'>
-                  <img className='w-full h-auto rounded-lg shadow-sm p-2' src="./src/assets/tazas11oz.png" alt="Tazas 11oz" />
+                  <img className='w-full h-auto rounded-lg shadow-sm p-2' src={tazas11oz} alt="Tazas 11oz" />
                 </div>
                 
                 <div className='w-full grid grid-cols-1 md:grid-cols-3 gap-3'>
@@ -185,7 +188,7 @@ function App() {
               /* VISTA 15 OZ */
               <div className='flex flex-col lg:flex-row items-center lg:items-start gap-4'>
                 <div className='w-48 sm:w-64 lg:w-72 lg:h-72 flex-shrink-0'>
-                  <img className='w-full h-auto rounded-lg shadow-sm p-2' src="./src/assets/tazas15oz.png" alt="Tazas 15oz" />
+                  <img className='w-full h-auto rounded-lg shadow-sm p-2' src={tazas15oz} alt="Tazas 15oz" />
                 </div>
                 
                 <div className='w-full grid grid-cols-1 md:grid-cols-3 gap-3'>
