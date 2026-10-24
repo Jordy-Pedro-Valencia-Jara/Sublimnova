@@ -6,6 +6,10 @@ import tazas11oz from './assets/tazas11oz.png'
 import tazas15oz from './assets/tazas15oz.png'
 
 function App() {
+  //Opciones para productos
+  type TipoProducto='Tazas'|'Tomatodos'|'Mousepad'|'Polos'|'Cuadros';
+  //Estado para los productos 
+  const [ProductoSeleccionado,setProductoSeleccionado]=useState<TipoProducto>('Tazas');
   // Estado para la pestaña de tazas seleccionada
   const [tazaSeleccionada, setTazaSeleccionada] = useState<'11oz' | '15oz'>('11oz');
 
@@ -73,6 +77,25 @@ function App() {
     { Cantidad: '32 a 49 uni', Precio: 'S/17 c/u' },
     { Cantidad: '50 a mas uni', Precio: 'S/16.5 c/u' }
   ];
+  
+    // TABLA 4-1: DATOS TOMATODO 600 ML 
+  const datostomatodo600ml = [
+    { Cantidad: '1 a 5 uni', Precio: 'S/13 c/u' },
+    { Cantidad: '6 a 11 uni', Precio: 'S/12.5 c/u' },
+    { Cantidad: '12 a 23 uni', Precio: 'S/12 c/u' },
+    { Cantidad: '24 a 31 uni', Precio: 'S/11.5 c/u' },
+    { Cantidad: '32 a 49 uni', Precio: 'S/11 c/u' },
+    { Cantidad: '50 a mas uni', Precio: 'S/10.5 c/u' }
+  ];
+      // TABLA 4-2: DATOS TOMATODO 750 ML 
+  const datostomatodo750ml = [
+    { Cantidad: '1 a 5 uni', Precio: 'S/15 c/u' },
+    { Cantidad: '6 a 11 uni', Precio: 'S/14.5 c/u' },
+    { Cantidad: '12 a 23 uni', Precio: 'S/14 c/u' },
+    { Cantidad: '24 a 31 uni', Precio: 'S/13.5 c/u' },
+    { Cantidad: '32 a 49 uni', Precio: 'S/13 c/u' },
+    { Cantidad: '50 a mas uni', Precio: 'S/12.5 c/u' }
+  ];
 
   return (
     <>
@@ -134,8 +157,31 @@ function App() {
       {/* CONTENIDO PRINCIPAL */}
       <div>
         <div className='max-w-6xl mx-auto px-2 sm:px-4 py-4'>
-          <div className='bg-gradient-to-br from-sky-200 via-pink-200 via-rose-180 to-amber-100 p-3 sm:p-5 rounded-xl shadow-md'>
-            
+          {/*Opciones de producto*/}
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-3 m-3'>
+            <button
+              onClick={()=>setProductoSeleccionado('Tazas')}
+              className={` p-3 rounded-lg shadow-sm text-center font-bold transition-all
+                ${ProductoSeleccionado==='Tazas'
+                  ?'bg-indigo-600 text-white shadow-md'
+                  :'bg-white text-gray-700 hover:bg-indigo-50 hover:text-indigo-600'}`}
+            >Tazas</button>
+            <button
+              onClick={()=>setProductoSeleccionado('Tomatodos')}
+              className={` p-3 rounded-lg shadow-sm text-center font-bold transition-all
+                ${ProductoSeleccionado==='Tomatodos'
+                  ?'bg-indigo-600 text-white shadow-md'
+                  :'bg-white text-gray-700 hover:bg-indigo-50 hover:text-indigo-600'}`}
+            >Tomatodos</button>
+            <div className='bg-white p-3 rounded-lg shadow-sm text-center font-bold text-gray-700'>Mousepad</div>
+            <div className='bg-white p-3 rounded-lg shadow-sm text-center font-bold text-gray-700'>Polos</div>
+            <div className='bg-white p-3 rounded-lg shadow-sm text-center font-bold text-gray-700'>Cuadros</div>
+          </div>
+
+          {ProductoSeleccionado==='Tazas'&&(
+
+            //PESTAÑA TAZAS 
+            <div className='bg-gradient-to-br from-sky-200 via-pink-200 via-rose-180 to-amber-100 p-3 sm:p-5 rounded-xl shadow-md'>
             {/* BOTONES PESTAÑAS 11oz / 15oz */}
             <div className='flex items-center w-full gap-2 sm:gap-4 mb-4 mt-1'>
               <button
@@ -165,8 +211,8 @@ function App() {
             {tazaSeleccionada === '11oz' ? (
               /* VISTA 11 OZ */
               <div className='flex flex-col lg:flex-row items-center lg:items-start gap-4'>
-                <div className='w-48 sm:w-64 lg:w-72 lg:h-72 flex-shrink-0'>
-                  <img className='w-full h-auto rounded-lg shadow-sm p-2' src={tazas11oz} alt="Tazas 11oz" />
+                <div className='w-64 h-64 sm:w-64 lg:w-72 lg:h-72 flex-shrink-0'>
+                  <img className='w-full h-full object-contain rounded-lg shadow-sm p-2' src={tazas11oz} alt="Tazas 11oz" />
                 </div>
                 
                 <div className='w-full grid grid-cols-1 md:grid-cols-3 gap-3'>
@@ -187,8 +233,8 @@ function App() {
             ) : (
               /* VISTA 15 OZ */
               <div className='flex flex-col lg:flex-row items-center lg:items-start gap-4'>
-                <div className='w-48 sm:w-64 lg:w-72 lg:h-72 flex-shrink-0'>
-                  <img className='w-full h-auto rounded-lg shadow-sm p-2' src={tazas15oz} alt="Tazas 15oz" />
+                <div className='w-64 h-64 sm:w-64 lg:w-72 lg:h-72 flex-shrink-0'>
+                  <img className='w-full h-full object-contain rounded-lg shadow-sm p-2' src={tazas15oz} alt="Tazas 15oz" />
                 </div>
                 
                 <div className='w-full grid grid-cols-1 md:grid-cols-3 gap-3'>
@@ -208,16 +254,10 @@ function App() {
               </div>
             )}
 
-          </div>
-
-          {/* SECCIONES SECUNDARIAS DE PRODUCTOS */}
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-3 mt-4'>
-            <div className='bg-white p-3 rounded-lg shadow-sm text-center font-bold text-gray-700'>Tomatodos</div>
-            <div className='bg-white p-3 rounded-lg shadow-sm text-center font-bold text-gray-700'>Mousepad</div>
-            <div className='bg-white p-3 rounded-lg shadow-sm text-center font-bold text-gray-700'>Polos</div>
-            <div className='bg-white p-3 rounded-lg shadow-sm text-center font-bold text-gray-700'>Cuadros</div>
-          </div>
-
+          </div>)}
+          {ProductoSeleccionado==='Tomatodos'&&(
+            <div>Hola</div>
+          )}
         </div>
       </div>
     </>
