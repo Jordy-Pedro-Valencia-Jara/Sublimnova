@@ -79,7 +79,7 @@ function App() {
   ];
   
     // TABLA 4-1: DATOS TOMATODO 600 ML 
-  const datostomatodo600ml = [
+  /*const datostomatodo600ml = [
     { Cantidad: '1 a 5 uni', Precio: 'S/13 c/u' },
     { Cantidad: '6 a 11 uni', Precio: 'S/12.5 c/u' },
     { Cantidad: '12 a 23 uni', Precio: 'S/12 c/u' },
@@ -96,6 +96,7 @@ function App() {
     { Cantidad: '32 a 49 uni', Precio: 'S/13 c/u' },
     { Cantidad: '50 a mas uni', Precio: 'S/12.5 c/u' }
   ];
+  */
 
   return (
     <>
